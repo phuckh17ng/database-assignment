@@ -1,0 +1,19 @@
+.login {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.login-address {
+	color: #14b66b;
+	padding-bottom: 17px;
+}
+.btn-back {
+	top: 13px;
+	left: 13px;
+	transform: rotate(180deg);
+	position: absolute;
+	cursor: pointer;
+	width: 20px;
+}

@@ -1,0 +1,33 @@
+.text-introduce {
+	margin-top: 20px;
+	font-size: 17px;
+}
+.ms {
+	width: 610px;
+}
+.btn-getstart {
+	width: 150px;
+	height: 50px;
+	border: none;
+	background-color: #1ac575;
+	color: #fff;
+	border-radius: 25px;
+	font-size: 17px;
+	font-weight: 600;
+	background-image: linear-gradient(
+		to right,
+		rgba(154, 255, 169, 0.777),
+		#1ac575
+	);
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease 0s;
+}
+.btn-getstart:hover {
+	opacity: 0.7;
+	transform: translateY(-7px);
+}
+@media (max-width: 960px) {
+	.introduce > h1 {
+		font-size: 20px;
+	}
+}
