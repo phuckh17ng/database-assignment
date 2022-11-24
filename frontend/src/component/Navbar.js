@@ -1,8 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
 
 const Navbar = () => {
+	const user = sessionStorage.getItem("username");
+	let loginStatus = true;
 	return (
 		<nav className="navbar navbar-expand-lg bg-light border-bottom">
 			<div className="container-fluid">
@@ -27,23 +29,44 @@ const Navbar = () => {
 					className="collapse navbar-collapse justify-content-end"
 					id="navbarNav"
 				>
-					<ul className="navbar-nav">
-						<li className="nav-item ms-2">
-							<a className="nav-link active" aria-current="page" href="/">
-								Home
-							</a>
-						</li>
-						<li className="nav-item ms-2">
-							<a className="nav-link active" href="/edit">
-								Edit
-							</a>
-						</li>
-						<li className="nav-item ms-2">
-							<a className="nav-link active" href="/login">
-								Login
-							</a>
-						</li>
-					</ul>
+					{!user ? (
+						<>
+							<ul className="navbar-nav">
+								<li className="nav-item ms-2">
+									<a className="nav-link active" aria-current="page" href="/">
+										Home
+									</a>
+								</li>
+								<li className="nav-item ms-2">
+									<a className="nav-link active" href="/login">
+										Sign in
+									</a>
+								</li>
+							</ul>
+						</>
+					) : (
+						<ul className="navbar-nav edit-nav">
+							<li className="nav-item ms-2">
+								<a className="nav-link active" aria-current="page" href="/">
+									Home
+								</a>
+							</li>
+							<li className="nav-item ms-2">
+								<a className="nav-link active" href="/edit">
+									Edit
+								</a>
+							</li>
+							<li className="nav-item ms-2">
+								<a
+									className="nav-link active"
+									onClick={() => sessionStorage.clear()}
+									href="/"
+								>
+									Sign out
+								</a>
+							</li>
+						</ul>
+					)}
 				</div>
 			</div>
 		</nav>
