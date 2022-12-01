@@ -49,13 +49,13 @@
 	padding: 10px 20px 10px 20px;
 }
 .patient-field > ul {
-	margin: 0px auto 15px auto;
+
 	display: flex;
 	align-items: center;
 	height: 100%;
 	padding-left: 0;
-	justify-content: space-between;
-	width: 85%;
+	justify-content: space-around;
+	width: 86%;
 }
 .patient-field > ul > li {
 	display: flex;
@@ -69,6 +69,6 @@
 	background-color: white;
 	width: 100%;
 }
-.add-patient{
+.add-patient {
 	cursor: pointer;
 }

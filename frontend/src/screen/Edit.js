@@ -22,6 +22,7 @@ const Edit = () => {
 
 	const form = useForm({
 		initialValues: {
+			search: "",
 			first_name: "",
 			last_name: "",
 			date_of_birth: "",
@@ -62,12 +63,29 @@ const Edit = () => {
 			});
 	}
 
+	const handleSearch = (values) => {
+		axios
+			.get(
+				`http://localhost/controllers/patient/searchPatient.php?search=${values.search}`
+			)
+			.then((response) => {
+				console.log(response);
+				setData(response.data);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
+
 	return (
 		<div className="edit">
 			<div className="edit-func">
 				<ul>
 					<li>
-						<div className="search-box">
+						<form
+							className="search-box"
+							onSubmit={form.onSubmit((values) => handleSearch(values))}
+						>
 							<img
 								src={require("../image/search-icon-png-5.png")}
 								style={{ width: "25px" }}
@@ -76,8 +94,9 @@ const Edit = () => {
 							<input
 								placeholder="Search"
 								style={{ marginLeft: "-30px", border: "none", outline: "none" }}
+								{...form.getInputProps("search")}
 							></input>
-						</div>
+						</form>
 					</li>
 					<li>
 						<img
@@ -88,7 +107,7 @@ const Edit = () => {
 					</li>
 					<li
 						className="add-patient"
-						onClick={() => setAddPatient(!addPatient)}
+						// onClick={() => setAddPatient(!addPatient)}
 						data-bs-toggle="modal"
 						data-bs-target="#staticBackdrop1"
 					>
@@ -103,12 +122,12 @@ const Edit = () => {
 				id="staticBackdrop1"
 				data-bs-backdrop="static"
 				data-bs-keyboard="false"
-				tabindex="-1"
+				tabIndex="-1"
 				aria-labelledby="staticBackdropLabel1"
 				aria-hidden="true"
 			>
 				<div class="modal-dialog modal-dialog-scrollable">
-					<div class="modal-content">
+					<div class="modal-content" style={{ borderRadius: "20px" }}>
 						<div class="modal-header">
 							<h1 class="modal-title fs-5" id="staticBackdropLabel1">
 								Edit
@@ -127,7 +146,7 @@ const Edit = () => {
 								onSubmit={form.onSubmit((values) => AddPatient(values))}
 							>
 								<div className="d-flex w-100 justify-content-between">
-									<div class="mb-3 me-2 w-50">
+									<div class="mb-3 me-2" style={{ width: "55%" }}>
 										<label class="form-label">First Name</label>
 										<input
 											type="text"
@@ -135,7 +154,7 @@ const Edit = () => {
 											{...form.getInputProps("first_name")}
 										/>
 									</div>
-									<div class="mb-3 me-2 w-50">
+									<div class="mb-3 me-2 w-25" style={{ width: "25%" }}>
 										<label class="form-label">Last Name</label>
 										<input
 											type="text"
@@ -144,7 +163,7 @@ const Edit = () => {
 										/>
 									</div>
 
-									<div class="mb-3" style={{ width: "30%" }}>
+									<div class="mb-3" style={{ width: "25%" }}>
 										<label for="disabledSelect" class="form-label">
 											Sex
 										</label>
@@ -229,7 +248,7 @@ const Edit = () => {
 										type="submit"
 										className="btn-submit btn btn-primary"
 										style={{ borderRadius: "30px" }}
-										onClick={() => window.location.reload(false)}
+										onClick={() => window.location.reload()}
 									>
 										Submit
 									</button>
@@ -255,7 +274,7 @@ const Edit = () => {
 			<div className="edit-box">
 				<div className="patient-field">
 					<ul>
-						<li>
+						<li style={{ width: "7%", marginLeft: "15px" }}>
 							<div
 								style={{
 									backgroundColor: "black",
@@ -267,7 +286,7 @@ const Edit = () => {
 							></div>
 							Id
 						</li>
-						<li>
+						<li style={{ width: "26%", paddingLeft: "0" }}>
 							<div
 								style={{
 									backgroundColor: "#14C38E",
@@ -279,7 +298,7 @@ const Edit = () => {
 							></div>
 							Name
 						</li>
-						<li>
+						<li style={{ width: "8%", paddingLeft: "0" }}>
 							<div
 								style={{
 									backgroundColor: "#F7A4A4",
@@ -291,7 +310,7 @@ const Edit = () => {
 							></div>
 							Sex
 						</li>
-						<li>
+						<li style={{ width: "15%" }}>
 							<div
 								style={{
 									backgroundColor: "#153462",
@@ -303,7 +322,7 @@ const Edit = () => {
 							></div>
 							Phone
 						</li>
-						<li>
+						<li style={{ width: "35%" }}>
 							<div
 								style={{
 									backgroundColor: "#562B08",
@@ -315,7 +334,7 @@ const Edit = () => {
 							></div>
 							Address
 						</li>
-						<li>
+						<li style={{ width: "9%", paddingLeft: "25px" }}>
 							<div
 								style={{
 									backgroundColor: "#54BAB9",
