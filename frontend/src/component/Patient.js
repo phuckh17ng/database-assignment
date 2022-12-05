@@ -134,7 +134,6 @@ const Patient = ({
 						style={{ width: "20px", cursor: "pointer" }}
 						alt="select"
 						onClick={() => {
-							// useMemo(() => form.setValues({ patient_id: P_code }));
 							console.log(P_code);
 							patient_id = P_code;
 							console.log(form.values);
